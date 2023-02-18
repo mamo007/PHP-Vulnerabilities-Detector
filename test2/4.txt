@@ -1,0 +1,148 @@
+vulnerability in 4.php
+
+
+
+
+
+	
+File Disclosure
+vulnerability concept:
+source 		sink 		vulnerability
+
+    $_POST
+    $_FILES
+
+	
++
+	imagecreatefrompng() 	
+=
+	File Disclosure
+vulnerability description:
+
+An attacker might read local files with this vulnerability. User tainted data is used when creating the file name that will be opened and read, thus allowing an attacker to read source code and other arbitrary files on the webserver that might lead to new attack vectors. In example the attacker can detect new vulnerabilities in source code files or read user credentials.
+
+vulnerable example code:
+
+1: echo  file_get_contents("files/"  .  $_GET["file"]);  
+
+proof of concept:
+
+/index.php?file=../../../../../../../etc/passwd
+patch:
+
+Build a whitelist for positive file names. Do not only limit the file name to specific paths or extensions.
+
+1: $files  =  array("index.php",  "main.php");  if(!in_array($_GET["file"],  $files)) exit ;  
+
+related securing functions:
+
+    basename
+    dirname
+    pathinfo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+File manipulation vulnerability (File Upload)  
+vulnerability concept:
+source 		sink 		vulnerability
+
+    $_POST
+    $_FILES
+
+	
++
+	unlink() 	
+=
+	File Manipulation
+vulnerability description:
+
+An attacker might write to arbitrary files or inject arbitrary code into a file with this vulnerability. User tainted data is used when creating the file name that will be opened or when creating the string that will be written to the file. An attacker can try to write arbitrary PHP code in a PHP file allowing to fully compromise the server.
+
+vulnerable example code:
+
+1: $h  =  fopen($_GET["file"],  "w");  fwrite($h,  $_GET["data"]);  
+
+proof of concept:
+
+/index.php?file=shell.php&data=<?php phpinfo();?>
+patch:
+
+Build a whitelist for positive file names. Do not only limit the file name to specific paths or extensions. If you write into PHP files make sure an attacker can not write own PHP code. Use a whitelist with arrays or regular expressions (e.g. alphanumeric only).
+
+1: $files  =  array("index.php",  "main.php");  if(!in_array($_GET["file"],  $files)) exit ;  
+
+related securing functions:
+
+    basename
+    dirname
+    pathinfo
+
+	
+
+
+
+
+
+
+
+
+File Manipulation
+vulnerability concept:
+source 		sink 		vulnerability
+
+    $_POST
+    $_FILES
+
+	
++
+	rename() 	
+=
+	File Manipulation
+vulnerability description:
+
+An attacker might write to arbitrary files or inject arbitrary code into a file with this vulnerability. User tainted data is used when creating the file name that will be opened or when creating the string that will be written to the file. An attacker can try to write arbitrary PHP code in a PHP file allowing to fully compromise the server.
+
+vulnerable example code:
+
+1: $h  =  fopen($_GET["file"],  "w");  fwrite($h,  $_GET["data"]);  
+
+proof of concept:
+
+/index.php?file=shell.php&data=<?php phpinfo();?>
+patch:
+
+Build a whitelist for positive file names. Do not only limit the file name to specific paths or extensions. If you write into PHP files make sure an attacker can not write own PHP code. Use a whitelist with arrays or regular expressions (e.g. alphanumeric only).
+
+1: $files  =  array("index.php",  "main.php");  if(!in_array($_GET["file"],  $files)) exit ;  
+
+related securing functions:
+
+    basename
+    dirname
+    pathinfo
+
+
+
+
+
+
+
+
+
+
