@@ -3,7 +3,7 @@ A tool to find Vulnerabilities in PHP Code using Python scripts.
 
 ## Description
 
-The project is made by Mamo007 and was meant to be eductionally only. It is coded in Python and PHP files for tests.
+The project is made by Mohamed Hamdi (Mamo007) and was meant to be eductionally only. It was coded in Python and the PHP files are for tests.
 It was my graduation project in Mansoura University. It allows you to scan your PHP files to check for vulnerabilities
 Including:
 
