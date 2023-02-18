@@ -22,7 +22,7 @@ the vulnerbility is found and what caused it also how to solve it and more.
 
 Example:
 
-![alt text](https://imgur.com/a/okITj4g)
+![alt text](https://i.imgur.com/rOi5kiY.png)
 
 ## Requirements
 
