@@ -22,7 +22,7 @@ the vulnerbility is found and what caused it also how to solve it and more.
 
 Example:
 
-![alt text](https://media.discordapp.net/attachments/845064745655730287/1076501335458983997/scan.png?width=530&height=408)
+![alt text](https://imgur.com/a/okITj4g)
 
 ## Requirements
 
